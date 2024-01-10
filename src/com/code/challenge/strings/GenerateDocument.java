@@ -2,7 +2,9 @@ package com.code.challenge.strings;
 
 import org.assertj.core.api.Assertions;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class GenerateDocument {
@@ -74,4 +76,38 @@ public class GenerateDocument {
         }
         return true;
     }
+
+    /**
+     * runs in Big O(n+m) time and Big O(n) space
+     * @param characters
+     * @param document
+     * @return
+     */
+    public boolean generateDocumentThree(String characters, String document) {
+        // Write your code here.
+        Map<Character,Integer> counts = new HashMap<>();
+        for(int i = 0; i < characters.length(); i++) {
+            char c = characters.charAt(i);
+            if(!counts.containsKey(characters.charAt(i)))
+                counts.put(c,1);
+            else {
+                int count = counts.get(c);
+                counts.put(c,++count);
+            }
+        }
+
+        for(int j = 0; j < document.length(); j++) {
+            char c = document.charAt(j);
+            if(!counts.containsKey(c))
+                return false;
+            else {
+                int count = counts.get(c);
+                if(count <= 0)
+                    return false;
+                counts.put(c,--count);
+            }
+        }
+        return true;
+    }
+
 }
