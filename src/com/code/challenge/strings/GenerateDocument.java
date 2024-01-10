@@ -78,7 +78,7 @@ public class GenerateDocument {
     }
 
     /**
-     * runs in Big O(n+m) time and Big O(n) space
+     * runs in Big O(n+m) time and Big O(c) space
      * @param characters
      * @param document
      * @return
