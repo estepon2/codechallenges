@@ -6,7 +6,7 @@ public class FirstNonRepeatingCharacter {
 
     }
 
-    // brute force solution
+    // Big O(n2) time Big O(1) space
     public static int firstNonRepeatingCharacter(String string) {
         // Write your code here.
         for(int i= 0; i< string.length(); i ++) {
