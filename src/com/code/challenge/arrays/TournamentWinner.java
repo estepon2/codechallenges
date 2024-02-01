@@ -23,7 +23,7 @@ public class TournamentWinner {
 
         String expectedWinner = "Python";
 
-        String winner = tournamentWinner(competitions, results);
+        String winner = tournamentWinnerTwo(competitions, results);
 
         Assertions.assertThat(expectedWinner).isEqualTo(winner);
 
@@ -51,5 +51,26 @@ public class TournamentWinner {
                 winner=entry.getKey();
         }
         return winner;
+    }
+
+    // Big O(n) time Big O(k) space
+    public static String tournamentWinnerTwo(List<List<String>> competitions, List<Integer> results) {
+        String bestTeam = "";
+        Map<String, Integer> winners = new HashMap<>();
+        winners.put(bestTeam,0);
+
+        for(int i=0; i < competitions.size(); i++) {
+            String localWinner = results.get(i) == 0 ? competitions.get(i).get(1): competitions.get(i).get(0);
+            if(winners.containsKey(localWinner)) {
+                int points = winners.get(localWinner);
+                winners.put(localWinner,points+3);
+            } else {
+                winners.put(localWinner,3);
+            }
+            if(winners.get(localWinner) > winners.get(bestTeam))
+                bestTeam = localWinner;
+        }
+
+        return bestTeam;
     }
 }
