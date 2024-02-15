@@ -17,7 +17,10 @@ public class ThreeNumberSum {
                 new Integer[]{-6, 1, 5}
         ));
 
-        Assertions.assertThat(expected).isEqualTo(result);
+        for(int i = 0; i < expected.size(); i++) {
+            Assertions.assertThat(expected.get(i)).isEqualTo(result.get(i));
+        }
+
     }
 
     // it runs in Big O(n2) time because of the two nested loops
