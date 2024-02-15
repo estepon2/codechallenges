@@ -20,6 +20,8 @@ public class ThreeNumberSum {
         Assertions.assertThat(expected).isEqualTo(result);
     }
 
+    // it runs in Big O(n2) time because of the two nested loops
+    // O(n) space
     public static List<Integer[]> threeNumberSum(int[] array, int targetSum) {
         List<Integer[]> triplets = new ArrayList<>();
         Arrays.sort(array);
