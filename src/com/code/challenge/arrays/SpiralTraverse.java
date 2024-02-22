@@ -21,6 +21,7 @@ public class SpiralTraverse {
         Assertions.assertThat(expected).isEqualTo(actual);
     }
 
+    // Runs in Big O(n) time and Big O(n) space
     public static List<Integer> spiralTraverse(int[][] array) {
         List<Integer> result = new ArrayList<>();
         int startRow = 0;
@@ -32,6 +33,19 @@ public class SpiralTraverse {
             for(int col = startColumn; col <= endColumn; col++)
                 result.add(array[startRow][col]);
 
+            for(int row = startRow +1; row <= endRow; row++)
+                result.add(array[row][endColumn]);
+
+            for(int col = endColumn-1; col >= startColumn; col--)
+                result.add(array[endColumn][col]);
+
+            for(int row = endRow-1; row > startRow; row--)
+                result.add(array[row][startColumn]);
+
+            startRow++;
+            endRow--;
+            startColumn++;
+            endColumn--;
         }
 
         return result;
