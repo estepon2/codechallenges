@@ -29,24 +29,26 @@ public class SpiralTraverse {
         int endRow = array.length-1;
         int endColumn = array[0].length-1;
 
-        while(startRow <= endRow && startColumn <= endColumn ){
-            for(int col = startColumn; col <= endColumn; col++)
-                result.add(array[startRow][col]);
+        for(int col = startRow; col <= endColumn; col++)
+            result.add(array[startRow][col]);
 
-            for(int row = startRow +1; row <= endRow; row++)
-                result.add(array[row][endColumn]);
+        for(int row = startRow+1; row <= endRow; row++)
+            result.add(array[row][endColumn]);
 
-            for(int col = endColumn-1; col >= startColumn; col--)
-                result.add(array[endColumn][col]);
-
-            for(int row = endRow-1; row > startRow; row--)
-                result.add(array[row][startColumn]);
-
-            startRow++;
-            endRow--;
-            startColumn++;
-            endColumn--;
+        for(int col = endColumn-1; col >= startColumn; col--) {
+            if(startRow == endRow) break;
+            result.add(array[endRow][col]);
         }
+
+        for(int row = endRow-1; row > startRow; row--) {
+            if(startColumn == endColumn) break;
+            result.add(array[row][startColumn]);
+        }
+
+        startRow++;
+        endColumn--;
+        endRow--;
+        startColumn++;
 
         return result;
     }
