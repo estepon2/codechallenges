@@ -57,5 +57,4 @@ public class SpiralTraverse {
 
         return result;
     }
-    }
 }
