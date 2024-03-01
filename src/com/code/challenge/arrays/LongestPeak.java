@@ -13,6 +13,8 @@ public class LongestPeak {
         Assertions.assertThat(actual).isEqualTo(expected);
 
     }
+
+    // runs in Big O(n) time and Big O(1) space
     public static int longestPeak(int[] array) {
         // Write your code here.
         int longestPeakLength = 0;
