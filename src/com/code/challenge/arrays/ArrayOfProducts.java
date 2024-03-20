@@ -8,14 +8,14 @@ public interface ArrayOfProducts {
         int[] input = new int[]{5, 1, 4, 2};
         int[] expected = new int[]{8,40,10,20};
 
-        int[] output = arrayOfProductsTwo(input);
+        int[] output = arrayOfProductsThree(input);
 
         Assertions.assertThat(output).isEqualTo(expected);
 
     }
 
     // runs in Big O(n2) time and Big O(n) space
-    static public int[] arrayOfProducts(int[] array) {
+    public static int[] arrayOfProducts(int[] array) {
 
         int [] products = new int[array.length];
 
@@ -34,7 +34,7 @@ public interface ArrayOfProducts {
     }
 
     // runs in Big O(n) time and Big O(n) space
-    static public int[] arrayOfProductsTwo(int[] array) {
+    public static int[] arrayOfProductsTwo(int[] array) {
 
         int[] products = new int[array.length];
         int[] leftProducts = new int[array.length];
@@ -55,6 +55,26 @@ public interface ArrayOfProducts {
         for(int i = 0; i < array.length; i ++){
             products[i] = leftProducts[i] * rightProducts[i];
         }
+        return products;
+    }
+
+    // runs in Big O(n) time and Big O(n) space
+    public static int[] arrayOfProductsThree(int [] array) {
+        int[] products = new int[array.length];
+
+        int leftRunningProduct = 1;
+
+        for(int i=0; i < array.length; i++) {
+            products[i] = leftRunningProduct;
+            leftRunningProduct *= array[i];
+        }
+
+        int rightRunningProduct = 1;
+        for(int i = array.length-1; i >=0; i--) {
+            products[i] *= rightRunningProduct;
+            rightRunningProduct *= array[i];
+        }
+
         return products;
     }
 }
